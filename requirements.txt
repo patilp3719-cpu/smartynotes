@@ -1,1 +1,8 @@
--r smartnotes/requirements.txt
+fastapi[all]
+sqlalchemy
+pydantic
+python-dotenv
+apscheduler
+google-genai
+openai
+httpx
