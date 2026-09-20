@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartNotes</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>SmartyNotes 🤓</h2>
+                <button id="theme-toggle" title="Toggle Dark Mode">🌙</button>
+            </div>
+            
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Find that one thing...">
+            </div>
+            
+            <button id="new-note-btn" class="primary-btn">✨ Magic New Note</button>
+            
+            <ul class="note-list" id="note-list">
+                <!-- Notes will be dynamically populated -->
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div id="editor-container" class="hidden">
+                <div class="editor-header">
+                    <input type="text" id="note-title" placeholder="Give me a snazzy title">
+                    <div class="save-status" id="save-status">Safe & Sound 🛡️</div>
+                    <button id="delete-btn" class="danger-btn">Trash it 🗑️</button>
+                </div>
+                
+                <div class="editor-meta">
+                    <div class="meta-row">
+                        <span class="meta-label">Tags:</span>
+                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
+                            <div id="note-tags" class="tag-container"></div>
+                            <input type="text" id="add-tag-input" placeholder="+ Add tag (Enter)" list="default-tags">
+                            <datalist id="default-tags">
+                                <option value="task"></option>
+                                <option value="plan"></option>
+                                <option value="idea"></option>
+                                <option value="important note"></option>
+                            </datalist>
+                        </div>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Quick grabs:</span>
+                        <div class="quick-tags tag-container" id="quick-tags-container">
+                            <div class="tag quick-tag" data-tag="task">task 📌</div>
+                            <div class="tag quick-tag" data-tag="plan">plan 🗺️</div>
+                            <div class="tag quick-tag" data-tag="idea">idea 💡</div>
+                            <div class="tag quick-tag" data-tag="important note">important note 🚨</div>
+                        </div>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Doomsday:</span>
+                        <input type="datetime-local" id="note-due-date">
+                    </div>
+                </div>
+                
+                <textarea id="note-content" placeholder="Pour your thoughts here..."></textarea>
+                
+                <!-- AI Insights Card -->
+                <div class="ai-insights-card hidden" id="ai-insights-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3>🧠 Brain Juice Insights</h3>
+                        <button class="secondary-btn" id="re-enrich-btn" title="Re-analyze with AI">Re-analyze 🔄</button>
+                    </div>
+                    <p><strong>TL;DR:</strong> <span id="ai-summary"></span></p>
+                    <p><strong>Panic Level (Priority):</strong> <span id="ai-priority"></span></p>
+                    <div class="ai-suggested-tags">
+                        <strong>Robot suggests:</strong>
+                        <div id="ai-tags" class="tag-container"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="empty-state" class="empty-state">
+                <div style="text-align: center;">
+                    <h1 style="font-size: 4rem; margin-bottom: 1rem;">🦗</h1>
+                    <p>Looks like my brain is empty...<br>Select a note or create one before I fall asleep!</p>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Ask Notes Panel -->
+        <div class="ask-panel">
+            <div class="ask-header" id="ask-header">
+                <span>Interrogate your notes 🕵️</span>
+                <span id="ask-toggle">▲</span>
+            </div>
+            <div class="ask-body hidden" id="ask-body">
+                <div id="ask-history" class="ask-history"></div>
+                <div class="ask-input-group">
+                    <input type="text" id="ask-input" placeholder="Ask a question...">
+                    <button id="ask-btn">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="/app.js"></script>
+</body>
+</html>

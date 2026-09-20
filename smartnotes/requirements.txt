@@ -1,0 +1,9 @@
+fastapi[all]
+sqlalchemy
+pydantic
+python-dotenv
+apscheduler
+google-genai
+openai
+pytest
+httpx
